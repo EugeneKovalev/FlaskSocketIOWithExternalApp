@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Socket Project</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript" charset="utf-8">
+        var socket = io.connect('http://127.0.0.1:5001');
+        socket.on('connect', function () {
+            console.log('xxx');
+            socket.send('Connection has been established');
+        });
+        socket.on('message', function(message){
+            console.log('CLIENT>>> received message: ' + message);
+        });
+        socket.on('my_event', function(message){
+            console.log('My event has been called + ' + message);
+        });
+
+    </script>
+    <ul id="messages"></ul>
+    <button id="sendbutton" onclick="socket.send('I\'m clicked!');">Send</button>
+</body>
+</html>
