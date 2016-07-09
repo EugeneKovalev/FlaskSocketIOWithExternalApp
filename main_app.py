@@ -12,17 +12,7 @@ socketio = SocketIO(
 
 @app.route('/')
 def hello_world():
-    #send('SERVER 5000>>> message from server 5000', broadcast=True)
-    try:
-        emit('my_event', 'fwggqwwgqgwqgwgwqgwq')
-    except Exception:
-        print('First error')
-    try:
-        socketio.emit('my_event', 'fwggqwwgqgwqgwgwqgwq')
-        socketio.send('my_event', 'fwggqwwgqgwqgwgwqgwq')
-    except Exception:
-        print('Second error')
-
+    socketio.emit('my_event', 'fwggqwwgqgwqgwgwqgwq')
     return "Hello, world!"
 
 
